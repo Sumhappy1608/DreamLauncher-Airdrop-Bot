@@ -13,7 +13,7 @@ module.exports = {
     keyRules,
     keyHelp: "📨 Contact",
     START: (user) => {
-        return `Hello *${user.bold()}*!, This is a friendly DreamLauncher Airdrop bot.
+        return `Hello ${user}!, This is a friendly DreamLauncher Airdrop bot.
     \nWelcome to participate in our airdrop!
     \n💰Please perform the tasks below to earn to ${process.env.TOKEN_AMOUNT} ${process.env.SYMBOL}.
     \n💰Besites that, for each invited new participant, you can earn ${process.env.BONUS} ${process.env.SYMBOL} for bonus`
@@ -44,10 +44,13 @@ module.exports = {
     Wallet: ${info.wallet}
         \nIf you don not sure you can restart the airdrop again!`
     },
+    RESTART: 'Restart, please press /start to try again',
     DONE: (id) => {
         return `🎉 Congratulations for completing all the tasks.
         \n👏 For each person you invite, you will get ${process.env.BONUS} ${process.env.SYMBOL}.
         \n⚠️ Only users who have never started the airdrop before are valid.
+        \n🗓 The airdrop will start at ${process.env.BEGIN_TIME} ${process.env.TIME_ZONE}
+        \n🗓 The airdrop will start end at ${process.env.END_TIME} ${process.env.TIME_ZONE}
         \n🔗 Your referral link：https://t.me/TestForDATA_bot?start=${id}`
     },
     twNotFollow: "You haven't followed page twitter",
@@ -55,6 +58,8 @@ module.exports = {
     twNotLike: "You haven't like post twitter",
     twNotUser: "You must bind username twitter",
     teleNotFollow: "You haven't follow chanel telegram",
-    teleNotJoin: "You haven't join group telegram",
-    notFoundTw: "Not found user twitter, please try again."
+    teleNotJoin: "❌ You haven't join group telegram",
+    notFoundTw: "Not found user twitter, please try again.",
+    PRE_START: `❇ The airdrop will start in ${process.env.BEGIN_TIME} ${process.env.TIME_ZONE}`,
+    ENDED: `❇ The airdrop ended. Thank for your participation!`
 }

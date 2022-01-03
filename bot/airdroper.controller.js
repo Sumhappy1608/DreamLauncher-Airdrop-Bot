@@ -4,9 +4,8 @@ const STEP_NONE = 0;
 const STEP_TWITTER = 1;
 const STEP_TELEGRAM = 2;
 const STEP_FACEBOOK = 3;
-const STEP_WEBSITE = 4
-const STEP_WALLET = 5;
-const STEP_REFERRAL = 6;
+const STEP_WALLET = 4;
+const STEP_REFERRAL = 5;
 
 const getCurrentStep = async (id) => {
     const user = await dataModel.findOne({id: id});
@@ -23,13 +22,10 @@ const getCurrentStep = async (id) => {
     else if(user.facebook === null){
         return 3;
     }
-    else if(user.isVisitWebsite === false) {
-        return 4
-    }
     else if(user.wallet === null){
-        return 5;
+        return 4;
     }
-    else return 6;
+    else return 5;
 }
 
 const getAirdropById = async (id) => {
@@ -54,7 +50,6 @@ const updateAirdrop = async (id, data) => {
         telegram,
         facebook,
         wallet,
-        website,
     } = data
     if(twitter !== undefined) {
         await dataModel.updateOne({id: id}, {twitter: twitter});
@@ -64,9 +59,6 @@ const updateAirdrop = async (id, data) => {
     }
     else if(facebook !== undefined) {
         await dataModel.updateOne({id: id}, {facebook: facebook});
-    }
-    else if(website !== undefined) {
-        await dataModel.updateOne({id: id}, {isVisitWebsite: true})
     }
     else if(wallet !== undefined) {
         await dataModel.updateOne({id: id}, {wallet: wallet});
@@ -107,7 +99,7 @@ const isUniqueWallet = async (wallet) => {
 }
 
 const restartAirdrop = async (id) => {
-    await dataModel.updateOne({id: id}, {twitter: null, telegram: null, facebook: null, isVisitWebsite: false, wallet: null, referral: null});
+    await dataModel.updateOne({id: id}, {twitter: null, telegram: null, facebook: null, wallet: null});
 }
 
 const addReferralUser = async (referralId, inviteId) => {
@@ -148,7 +140,6 @@ module.exports = {
     STEP_TWITTER,
     STEP_TELEGRAM,
     STEP_FACEBOOK,
-    STEP_WEBSITE,
     STEP_WALLET,
     STEP_REFERRAL
 }
