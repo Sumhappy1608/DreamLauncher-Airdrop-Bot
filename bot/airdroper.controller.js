@@ -111,23 +111,13 @@ const restartAirdrop = async (id) => {
 }
 
 const addReferralUser = async (referralId, inviteId) => {
-    if (referralId == inviteId){
-        return;
-    }
-    /**if  referralId existed*/
-    const refId = await dataModel.findOne({id: referralId});
-    if(refId){
-        return;
-    }
-
-
     const invite = await dataModel.findOne({id: inviteId});
     for(let i = 0; i < invite.invitedUser.length; i++) {
-        if(referralId == invite.invitedUser[i]){
+        if(referralId == invite.invitedUser[i].id){
             return;
         }
     }
-    invite.invitedUser.push(referralId)
+    invite.invitedUser.push({id: referralId})
     await dataModel.updateOne({id: inviteId}, {invitedUser: invite.invitedUser})
 
 }

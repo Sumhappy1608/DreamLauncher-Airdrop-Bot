@@ -13,13 +13,14 @@ module.exports = {
     keyRules,
     keyHelp: "📨 Contact",
     START: (user) => {
-        return `Hello **${user}**!, This is a friendly DreamLauncher Airdrop bot.
+        return `Hello *${user.bold()}*!, This is a friendly DreamLauncher Airdrop bot.
     \nWelcome to participate in our airdrop!
     \n💰Please perform the tasks below to earn to ${process.env.TOKEN_AMOUNT} ${process.env.SYMBOL}.
     \n💰Besites that, for each invited new participant, you can earn ${process.env.BONUS} ${process.env.SYMBOL} for bonus`
     },
     TWITTER: (user) => {
-        return `Let's start by following our twitter and retweet the pin post.\n Then submit your twitter account bellow`
+        return `Let's start by following our twitter and retweet the pin post.\n Then submit your twitter account bellow
+        \n Make sure your twitter account is correct, we will check it later `
     },
     TELEGRAM: (user) => {
         return `Great ${user}, next join to our telegram group.\n Then submit your telegram handle below`
@@ -28,7 +29,7 @@ module.exports = {
         return `Great ${user}, next like to our facebook group.\n Then submit your facebook handle below`
     },
     WEBSITE: (user) => {
-        return `Now let click in the button below to visit our website`;
+        return `Now let click in the button below to visit our website. Then answer the question `;
     },
     WALLET: (user) => {
         return `This is final step. Please submit your BEP-20 address here`
