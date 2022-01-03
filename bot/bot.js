@@ -19,6 +19,7 @@ const {
   isUniqueWallet,
   addReferralUser,
   setIsDone,
+  getIsDone
 } = require("./airdroper.controller");
 const {checkTwitter} = require('./twitter')
 
@@ -28,17 +29,8 @@ const listText = require("./message");
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
-const EVENT_CHECK_MISSION = "check_mission";
-const EVENT_USERNAME = "username_twitter";
 
 const keyboards = {
-  main: {
-    inline_keyboard: [
-      [{ text: listText.STEP1, url: process.env.TWITTER_LINK }],
-      [{ text: listText.STEP2, url: process.env.TELEGRAM_LINK }],
-      [{ text: listText.STEP3, url: process.env.FACEBOOK_LINK }],
-    ],
-  },
   telegram: {
     inline_keyboard: [
       [{ text: 'Telegram', url: process.env.TELEGRAM_LINK }],
@@ -72,14 +64,6 @@ const keyboards = {
   },
 };
 
-// bot.onText(/\/start (.+)|\/start/i, function (message, match) {
-//   var invite_code;
-//   var username;
-//   if (match[1] != undefined){
-//       invite_code = match[1];
-//       username = message.from.username;
-//   }
-// });
 
 bot.onText(/\/start (.+)|\/start/i, async (msg, match) => {
   if (msg.from.is_bot) {
@@ -149,7 +133,7 @@ const twitterStep = async (msg) => {
     return bot.sendMessage(msg.chat.id, listText.validTwitter);
   } 
   else if (await isUniqueTwitter(msg.text)) {
-    return bot.sendMessage(msg.chat.id, "twitter đã được xài");
+    return bot.sendMessage(msg.chat.id, "twitter is used. Please try another one");
   } 
   else {
     await bot.sendMessage(msg.chat.id, listText.TELEGRAM(msg.chat.username), {
