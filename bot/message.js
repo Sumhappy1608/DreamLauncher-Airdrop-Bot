@@ -28,8 +28,9 @@ module.exports = {
     FACEBOOK: (user) => {
         return `Great ${user}, next like to our facebook group.\n Then submit your facebook handle below`
     },
-    WEBSITE: (user) => {
-        return `Now let click in the button below to visit our website. Then answer the question `;
+    ICO: (user) => {
+        return `Great ${user}, please create an account for our ico website.\n Then submit your email used for register ico website below
+        \n We will send token through it`;
     },
     WALLET: (user) => {
         return `This is final step. Please submit your BEP-20 address here`
@@ -61,5 +62,10 @@ module.exports = {
     teleNotJoin: "❌ You haven't join group telegram",
     notFoundTw: "Not found user twitter, please try again.",
     PRE_START: `❇ The airdrop will start in ${process.env.BEGIN_TIME} ${process.env.TIME_ZONE}`,
-    ENDED: `❇ The airdrop ended. Thank for your participation!`
+    ENDED: `❇ The airdrop ended. Thank for your participation!`,
+    STATISTIC: ({user, bonusAmount}) => {
+        return `Hello ${user}
+        \n Your token can receive is ${process.env.TOKEN_AMOUNT} ${process.env.SYMBOL}
+        \n Your bonus token is ${bonusAmount} ${process.env.SYMBOL}`
+    }
 }
