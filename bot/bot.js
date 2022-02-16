@@ -209,9 +209,13 @@ const checkJoinedTelegramGroup = async (id) => {
 };
 
 const canAirdrop = () => {
-  if (Date.now() < convert(process.env.BEGIN_TIME)) {
+  const now = Date.now();
+  const start = convert(process.env.BEGIN_TIME);
+  const ended = convert(process.env.END_TIME);
+
+  if (now < start) {
     return "PRESTART";
-  } else if (Date.now() > convert(process.env.END_TIME)) {
+  } else if (now > ended) {
     return "ENDED";
   } else {
     return true;

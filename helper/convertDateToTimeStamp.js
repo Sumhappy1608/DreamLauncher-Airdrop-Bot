@@ -6,7 +6,7 @@ const convert = (datetime) => {
     const myDate = myDatetime[1].split(' ');
     const myTime = myDatetime[0].split(':');
     const date = new Date(myDate[3], months.findIndex(month => { return month == myDate[1]}), myDate[2], myTime[0], myTime[1])
-
+    
     return date.getTime();
 }
 
