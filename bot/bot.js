@@ -25,7 +25,8 @@ const {
 } = require("./airdroper.controller");
 
 // replace the value below with the Telegram token you receive from @BotFather
-const token = process.env.BOT_API;
+const env = process.env.NODE_ENV || "dev";
+const token = env == "dev" ? process.env.TEST_BOT_API : process.env.BOT_API;
 const listText = require("./message");
 const { convert } = require("../helper/convertDateToTimeStamp");
 const { validateEmail } = require("../helper/validate");
