@@ -103,10 +103,10 @@ const mission = async ({ msg, step }) => {
   } else if (step === STEP_TWITTER) {
     await twitterStep(msg);
   } else if (step === STEP_TELEGRAM) {
-    // const check = await checkJoinedTelegramGroup(msg.chat.id);
-    // if (!check) {
-    //   return bot.sendMessage(msg.chat.id, listText.teleNotJoin);
-    // }
+    const check = await checkJoinedTelegramGroup(msg.chat.id);
+    if (!check) {
+      return bot.sendMessage(msg.chat.id, listText.teleNotJoin);
+    }
     await telegramStep(msg);
   } else if (step === STEP_FACEBOOK) {
     await facebookStep(msg);
@@ -196,7 +196,7 @@ const walletStep = async (msg) => {
 };
 
 const checkJoinedTelegramGroup = async (id) => {
-  const result = await bot.getChatMember(-673886390, id);
+  const result = await bot.getChatMember(process.env.TELEGRAM_GROUP_ID, id);
   if (!result) {
     return false;
   }
