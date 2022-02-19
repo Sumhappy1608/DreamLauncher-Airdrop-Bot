@@ -28,7 +28,7 @@ const {
 const token = process.env.BOT_API;
 const listText = require("./message");
 const { convert } = require("../helper/convertDateToTimeStamp");
-const {validateEmail} = require("../helper/validate");
+const { validateEmail } = require("../helper/validate");
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
@@ -53,9 +53,7 @@ const keyboards = {
     ],
   },
   statistic: {
-    inline_keyboard: [
-      [{ text: "〽️ STATISTIC", callback_data: "STATISTIC" }]
-    ],
+    inline_keyboard: [[{ text: "〽️ STATISTIC", callback_data: "STATISTIC" }]],
   },
 };
 
@@ -73,8 +71,7 @@ bot.onText(/\/start (.+)|\/start/i, async (msg, match) => {
 
   const _isJoined = await isJoin(id);
   if (_isJoined === STEP_REFERRAL) {
-    return await bot.sendMessage(msg.chat.id, listText.DONE(msg.chat.id),
-    {
+    return await bot.sendMessage(msg.chat.id, listText.DONE(msg.chat.id), {
       reply_markup: keyboards.statistic,
     });
   } else if (_isJoined == false) {
@@ -92,11 +89,9 @@ bot.onText(/\.*/, async (msg) => {
   const id = msg.chat.id;
   if (canAirdrop() === "PRESTART") {
     return bot.sendMessage(id, listText.PRE_START);
-  } 
-  else if (canAirdrop() === "ENDED") {
+  } else if (canAirdrop() === "ENDED") {
     return bot.sendMessage(id, listText.ENDED);
-  } 
-  else {
+  } else {
     const step = await getCurrentStep(id);
     await mission({ msg: msg, step: step });
   }
@@ -116,8 +111,7 @@ const mission = async ({ msg, step }) => {
     await facebookStep(msg);
   } else if (step === STEP_EMAIL) {
     await icoStep(msg);
-  }
-  else if (step === STEP_WALLET) {
+  } else if (step === STEP_WALLET) {
     await walletStep(msg);
   } else {
   }
@@ -144,7 +138,7 @@ const twitterStep = async (msg) => {
     await bot.sendMessage(msg.chat.id, listText.TELEGRAM(msg.chat.username), {
       reply_markup: keyboards.telegram,
     });
-    await updateAirdrop({id: msg.chat.id, twitter: msg.text });
+    await updateAirdrop({ id: msg.chat.id, twitter: msg.text });
   }
 };
 
@@ -155,7 +149,7 @@ const facebookStep = async (msg) => {
       "❌ Facebook is used. Please try another one"
     );
   }
-  await updateAirdrop({id: msg.chat.id, facebook: msg.text });
+  await updateAirdrop({ id: msg.chat.id, facebook: msg.text });
   return bot.sendMessage(msg.chat.id, listText.ICO(msg.chat.username), {
     reply_markup: keyboards.ico,
   });
@@ -168,19 +162,19 @@ const telegramStep = async (msg) => {
       "❌ Telegram user is used. Please try another one"
     );
   }
-  await updateAirdrop({id: msg.chat.id, telegram: msg.text });
+  await updateAirdrop({ id: msg.chat.id, telegram: msg.text });
   return bot.sendMessage(msg.chat.id, listText.FACEBOOK(msg.chat.username), {
     reply_markup: keyboards.facebook,
   });
 };
 
 const icoStep = async (msg) => {
-  if(!validateEmail(msg.text)){
-    return bot.sendMessage(msg.chat.id, 'Invalid email, please try again')
+  if (!validateEmail(msg.text)) {
+    return bot.sendMessage(msg.chat.id, "Invalid email, please try again");
   }
-  await updateAirdrop({id: msg.chat.id, email: msg.text });
+  await updateAirdrop({ id: msg.chat.id, email: msg.text });
   return bot.sendMessage(msg.chat.id, listText.WALLET(msg.chat.username));
-}
+};
 
 const walletStep = async (msg) => {
   if (!/^(0x){1}[0-9a-fA-F]{40}$/i.test(msg.text)) {
@@ -191,7 +185,7 @@ const walletStep = async (msg) => {
       "❌ Wallet user is used. Please try another one"
     );
   } else {
-    await updateAirdrop({id: msg.chat.id, wallet: msg.text });
+    await updateAirdrop({ id: msg.chat.id, wallet: msg.text });
     const info = await getAirdropById(msg.chat.id);
 
     return bot.sendMessage(msg.chat.id, listText.confirmInfo(info), {
@@ -245,7 +239,10 @@ bot.on("callback_query", async (callbackQuery) => {
     const bonusAmount = await countBonus(callbackQuery.from.id);
     return bot.sendMessage(
       callbackQuery.from.id,
-      listText.STATISTIC({user: callbackQuery.from.username, bonusAmount: bonusAmount})
+      listText.STATISTIC({
+        user: callbackQuery.from.username,
+        bonusAmount: bonusAmount,
+      })
     );
   }
 });
