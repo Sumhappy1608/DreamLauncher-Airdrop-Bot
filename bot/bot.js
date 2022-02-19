@@ -103,10 +103,10 @@ const mission = async ({ msg, step }) => {
   } else if (step === STEP_TWITTER) {
     await twitterStep(msg);
   } else if (step === STEP_TELEGRAM) {
-    const check = await checkJoinedTelegramGroup(msg.chat.id);
-    if (!check) {
-      return bot.sendMessage(msg.chat.id, listText.teleNotJoin);
-    }
+    // const check = await checkJoinedTelegramGroup(msg.chat.id);
+    // if (!check) {
+    //   return bot.sendMessage(msg.chat.id, listText.teleNotJoin);
+    // }
     await telegramStep(msg);
   } else if (step === STEP_FACEBOOK) {
     await facebookStep(msg);
