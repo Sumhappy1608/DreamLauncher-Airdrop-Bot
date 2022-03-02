@@ -19,7 +19,7 @@ module.exports = {
     \n💰Besites that, for each invited new participant, you can earn ${process.env.BONUS} ${process.env.SYMBOL} for bonus`
     },
     TWITTER: (user) => {
-        return `Let's start by following our twitter and retweet the pin post.\n Then submit your twitter account bellow
+        return `Let's start by following our twitter and retweet this post bellow.\n Then submit your twitter account bellow
         \n Make sure your twitter account is correct, we will check it later `
     },
     TELEGRAM: (user) => {

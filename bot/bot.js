@@ -42,6 +42,7 @@ const keyboards = {
   },
   twitter: {
     inline_keyboard: [[{ text: "Twitter", url: process.env.TWITTER_LINK }]],
+    inline_keyboard: [[{ text: "Twitter Post", url: process.env.POST_LINK }]],
   },
   ico: {
     inline_keyboard: [[{ text: "ICO", url: process.env.ICO_PAGE_LINK }]],
