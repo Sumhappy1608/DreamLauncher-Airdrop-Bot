@@ -35,14 +35,18 @@ const bot = new TelegramBot(token, { polling: true });
 
 const keyboards = {
   telegram: {
-    inline_keyboard: [[{ text: "Telegram", url: process.env.TELEGRAM_LINK }]],
+    inline_keyboard: [[{ text: "DreamLauncher's Telegram", url: process.env.TELEGRAM_LINK }],
+                      [{ text: "Advertisor's Telegram", url: process.env.TELEGRAM_SPONSON_LINK }]
+                    ],
   },
   facebook: {
     inline_keyboard: [[{ text: "Facebook", url: process.env.FACEBOOK_LINK }]],
   },
   twitter: {
-    inline_keyboard: [[{ text: "Twitter", url: process.env.TWITTER_LINK }]],
-    inline_keyboard: [[{ text: "Twitter Post", url: process.env.POST_LINK }]],
+    inline_keyboard: [[{ text: "DreamLauncher's Twitter", url: process.env.TWITTER_LINK }],
+                      [{ text: "DreamLauncher's Twitter Post", url: process.env.POST_LINK }],
+                      [{ text: "Advertisor's Twitter", url: process.env.TWITTER_SPONSON_LINK }],
+                    ],
   },
   ico: {
     inline_keyboard: [[{ text: "ICO", url: process.env.ICO_PAGE_LINK }]],

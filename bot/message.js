@@ -19,11 +19,11 @@ module.exports = {
     \n💰Besites that, for each invited new participant, you can earn ${process.env.BONUS} ${process.env.SYMBOL} for bonus`
     },
     TWITTER: (user) => {
-        return `Let's start by following our twitter and retweet this post bellow.\n Then submit your twitter account bellow
+        return `Let's start by following our twitter, our sponson and retweet this post bellow.\n Then submit your twitter account bellow
         \n Make sure your twitter account is correct, we will check it later `
     },
     TELEGRAM: (user) => {
-        return `Great ${user}, next join to our telegram group.\n Then submit your telegram handle below`
+        return `Great ${user}, next join to our telegram group and our sponson.\n Then submit your telegram handle below`
     },
     FACEBOOK: (user) => {
         return `Great ${user}, next like to our facebook group.\n Then submit your facebook handle below`
