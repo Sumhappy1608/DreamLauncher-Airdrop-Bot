@@ -52,7 +52,7 @@ module.exports = {
         \n⚠️ Only users who have never started the airdrop before are valid.
         \n🗓 The airdrop will start at ${process.env.BEGIN_TIME} ${process.env.TIME_ZONE}
         \n🗓 The airdrop will start end at ${process.env.END_TIME} ${process.env.TIME_ZONE}
-        \n🔗 Your referral link：https://t.me/TestForDATA_bot?start=${id}`
+        \n🔗 Your referral link：https://t.me/DreamLauncherAirdrop_bot?start=${id}`
     },
     twNotFollow: "You haven't followed page twitter",
     twNotReTweet: "You haven't retweet post twitter",
