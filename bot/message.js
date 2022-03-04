@@ -66,6 +66,6 @@ module.exports = {
     STATISTIC: ({user, bonusAmount}) => {
         return `Hello ${user}
         \n Your token can receive is ${process.env.TOKEN_AMOUNT} ${process.env.SYMBOL}
-        \n Your bonus token is ${bonusAmount} ${process.env.SYMBOL}`
+        \n Your bonus token is ${bonusAmount * process.env.BONUS} ${process.env.SYMBOL}`
     }
 }
