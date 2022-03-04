@@ -36,7 +36,7 @@ const bot = new TelegramBot(token, { polling: true });
 const keyboards = {
   telegram: {
     inline_keyboard: [[{ text: "DreamLauncher's Telegram", url: process.env.TELEGRAM_LINK }],
-                      [{ text: "Advertisor's Telegram", url: process.env.TELEGRAM_SPONSON_LINK }]
+                      [{ text: "Advertiser's Telegram", url: process.env.TELEGRAM_SPONSON_LINK }]
                     ],
   },
   facebook: {
@@ -45,7 +45,7 @@ const keyboards = {
   twitter: {
     inline_keyboard: [[{ text: "DreamLauncher's Twitter", url: process.env.TWITTER_LINK }],
                       [{ text: "DreamLauncher's Twitter Post", url: process.env.POST_LINK }],
-                      [{ text: "Advertisor's Twitter", url: process.env.TWITTER_SPONSON_LINK }],
+                      [{ text: "Advertiser's Twitter", url: process.env.TWITTER_SPONSON_LINK }],
                     ],
   },
   ico: {
