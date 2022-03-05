@@ -30,7 +30,7 @@ module.exports = {
     },
     ICO: (user) => {
         return `Great ${user}, please create an account for our ico website.\n Then submit your email used for register ico website below
-        \n We will send token through it`;
+        \n We will send token through it (Check pin message in our group solve the problem)`;
     },
     WALLET: (user) => {
         return `This is final step. Please submit your BEP-20 address here`
